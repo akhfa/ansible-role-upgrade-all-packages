@@ -24,8 +24,7 @@
       when:
         - needs_restarting_output.rc != 0
         - upgrade_all_packages_reboot | bool
-        - not ansible_virtualization_type == "docker"       # skip reboot if this is a CI test in a container
-        - not ansible_virtualization_type == "containerd"   # skip reboot if this is a CI test in a container
+        - not (ansible_env.GITHUB_ACTIONS is defined and ansible_env.GITHUB_ACTIONS == "true")    # Skip in CI
 
 - name: Upgrade all packages in Debian systems
   when: ansible_os_family == "Debian"
@@ -50,5 +49,4 @@
       when:
         - reboot_required_file.stat.exists
         - upgrade_all_packages_reboot | bool
-        - not ansible_virtualization_type == "docker"       # skip reboot if this is a CI test in a container
-        - not ansible_virtualization_type == "containerd"   # skip reboot if this is a CI test in a container
+        - not (ansible_env.GITHUB_ACTIONS is defined and ansible_env.GITHUB_ACTIONS == "true")    # Skip in CI
