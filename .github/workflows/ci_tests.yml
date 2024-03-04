@@ -8,8 +8,6 @@ on:
   release:
     types:
       - published
-  schedule:
-    - cron: "0 7 * * 0"
 
 defaults:
   run:
