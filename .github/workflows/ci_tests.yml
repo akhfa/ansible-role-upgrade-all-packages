@@ -60,16 +60,41 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install Docker (Ubuntu)
+        if: ${{ startsWith(matrix.distro, 'ubuntu') || startsWith(matrix.distro, 'debian') }}
+        run: |
+          # Add Docker's official GPG key:
+          sudo apt-get update
+          sudo apt-get install -y ca-certificates curl
+          sudo install -m 0755 -d /etc/apt/keyrings
+          sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+          sudo chmod a+r /etc/apt/keyrings/docker.asc
+          # Add the repository to Apt sources:
+          echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+      - name: Install Docker (Red Hat-based)
+        if: ${{ startsWith(matrix.distro, 'centos') }}
+        run: |
+          sudo yum install -y yum-utils
+          sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+          sudo yum install -y docker-ce docker-ce-cli containerd.io
+          sudo systemctl start docker
+
       - name: Install test dependencies.
         run: pip3 install ansible molecule[docker] docker
 
       - name: disable apparmor on ubuntu systems
+        if: ${{ startsWith(matrix.distro, 'ubuntu') }}
         run: |
             set -x
             sudo apt-get install apparmor-profiles
             sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
             sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
-        if: ${{ startsWith(matrix.distro, 'ubuntu') }}
 
       - name: Run Molecule tests.
         run: molecule test
