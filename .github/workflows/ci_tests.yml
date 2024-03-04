@@ -78,14 +78,14 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
-  release:
-    name: Release to galaxy
-    needs:
-      - lint
-      - molecule
-    runs-on: ubuntu-latest
-    steps:
-      - name: galaxy
-        uses: robertdebock/galaxy-action@1.2.1
-        with:
-          galaxy_api_key: ${{ secrets.galaxy_api_key }}
+  # release:
+  #   name: Release to galaxy
+  #   needs:
+  #     - lint
+  #     - molecule
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: galaxy
+  #       uses: robertdebock/galaxy-action@1.2.1
+  #       with:
+  #         galaxy_api_key: ${{ secrets.galaxy_api_key }}
