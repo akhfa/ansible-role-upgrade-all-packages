@@ -66,14 +66,6 @@ jobs:
       - name: Install test dependencies.
         run: pip3 install ansible molecule[docker] docker molecule-docker
 
-      - name: disable apparmor on ubuntu systems
-        if: ${{ startsWith(matrix.distro, 'ubuntu') }}
-        run: |
-            set -x
-            apt-get install apparmor-profiles
-            ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
-            apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
-
       - name: Run Molecule tests.
         run: molecule test
         env:
