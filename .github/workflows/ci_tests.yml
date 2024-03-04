@@ -45,9 +45,9 @@ jobs:
         distro:
           - centos7
           - centos8
-          # - ubuntu2004
-          # - ubuntu2204
-          # - debian11
+          - ubuntu2004
+          - ubuntu2204
+          - debian12
 
     steps:
       - name: Check out the codebase.
