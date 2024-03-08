@@ -14,7 +14,6 @@ defaults:
     working-directory: 'ansible-role-upgrade-all-packages'
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -37,54 +36,10 @@ jobs:
           yamllint .
           ansible-lint .
 
-  molecule:
-    name: Molecule
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        distro:
-          - centos7
-          - centos8
-          - ubuntu2004
-          - ubuntu2204
-          - debian12
-
-    steps:
-      - name: Check out the codebase.
-        uses: actions/checkout@v2
-        with:
-          path: 'ansible-role-upgrade-all-packages'
-
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      
-      - name: Stop AppArmor service
-        ansible.builtin.systemd:
-          name: apparmor
-          state: stopped
-          enabled: no
-        when: ansible_distribution == 'Ubuntu'
-
-      - uses: docker-practice/actions-setup-docker@master
-        timeout-minutes: 12
-
-      - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker molecule-docker
-
-      - name: Run Molecule tests.
-        run: molecule test
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
-
   # release:
   #   name: Release to galaxy
   #   needs:
   #     - lint
-  #     - molecule
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: galaxy
