@@ -1,5 +1,10 @@
 ## 2024-03-16
 
+### Fixed
+- Ensured apt cache is updated before installing aptitude on Debian/Ubuntu systems and corrected parameter usage in Ansible tasks.
+
+## 2024-03-16
+
 ### Added
 - Support for Python 3.12 in CI environments.
 
