@@ -31,8 +31,9 @@
   block:
     - name: Debian/Ubuntu | Install aptitude is this is a debian/ubuntu system
       ansible.builtin.apt:
-        pkg: aptitude
+        name: aptitude
         state: present
+        update_cache: true
     - name: Debian/Ubuntu | upgrade all packages (Debian)
       ansible.builtin.apt:
         name: '*'
