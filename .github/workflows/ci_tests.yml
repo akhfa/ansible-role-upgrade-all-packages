@@ -36,14 +36,13 @@ jobs:
           yamllint .
           ansible-lint .
 
-# TODO: Enable release job once dependencies are resolved.
-  # release:
-  #   name: Release to galaxy
-  #   needs:
-  #     - lint
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: galaxy
-  #       uses: robertdebock/galaxy-action@1.2.1
-  #       with:
-  #         galaxy_api_key: ${{ secrets.galaxy_api_key }}
+  release:
+    name: Release to galaxy
+    needs:
+      - lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.1
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}
