@@ -38,5 +38,6 @@ GPLv3
 Author Information
 ------------------
 
-Initial Author: Pablo Escobar Lopez
-Maintainer: Akhmad Fakhoni Listiyan Dede
+Initial Author: Pablo Escobar Lopez [<img src="https://edent.github.io/SuperTinyIcons/images/svg/github.svg" width="20" />](https://github.com/pescobar/)
+
+Current Maintainer: Akhmad Fakhoni Listiyan Dede [<img src="https://edent.github.io/SuperTinyIcons/images/svg/github.svg" width="20" />](https://github.com/akhfa/) [<img src="https://edent.github.io/SuperTinyIcons/images/svg/linkedin.svg" width="20" title="LinkedIn">](https://www.linkedin.com/in/akhmadfakhoni/)
