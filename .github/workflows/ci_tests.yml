@@ -41,6 +41,7 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: galaxy
         uses: robertdebock/galaxy-action@1.2.1
