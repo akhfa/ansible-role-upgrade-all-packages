@@ -1,11 +1,11 @@
 ---
 galaxy_info:
 
-  namespace: pescobar
+  namespace: akhfa
 
   role_name: upgrade_all_packages
 
-  author: Pablo Escobar Lopez
+  author: Pablo Escobar Lopez (Maintained by Akhmad Fakhoni Listiyan Dede)
 
   description: Upgrade all packages. Optionally reboot the system if needed.
 
