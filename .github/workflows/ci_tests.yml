@@ -36,6 +36,7 @@ jobs:
           yamllint .
           ansible-lint .
 
+# TODO: Enable release job once dependencies are resolved.
   # release:
   #   name: Release to galaxy
   #   needs:
