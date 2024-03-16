@@ -1,5 +1,5 @@
-[![CI tests](https://github.com/pescobar/ansible-role-upgrade-all-packages/actions/workflows/ci_tests.yml/badge.svg)](https://github.com/pescobar/ansible-role-upgrade-all-packages/actions/workflows/ci_tests.yml)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-pescobar.upgrade_all_packages-blue.svg)](https://galaxy.ansible.com/pescobar/upgrade_all_packages)
+[![CI tests](https://github.com/akhfa/ansible-role-upgrade-all-packages/actions/workflows/ci_tests.yml/badge.svg)](https://github.com/akhfa/ansible-role-upgrade-all-packages/actions/workflows/ci_tests.yml)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-akhfa.upgrade_all_packages-blue.svg)](https://galaxy.ansible.com/akhfa/upgrade_all_packages)
 
 
 ansible-role-upgrade-all-packages
@@ -28,7 +28,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: pescobar.upgrade_all_packages }
+         - { role: akhfa.upgrade_all_packages }
 
 License
 -------
@@ -38,4 +38,5 @@ GPLv3
 Author Information
 ------------------
 
-Pablo Escobar Lopez
+Initial Author: Pablo Escobar Lopez
+Maintainer: Akhmad Fakhoni Listiyan Dede
